@@ -34,7 +34,7 @@ export function Footer() {
             เว็บไซต์รวมคูปองและดีลส่วนลดที่ดีที่สุดในไทย อัปเดตทุกวัน ประหยัดได้จริง
           </p>
           <div className="mt-4 flex gap-2">
-            {[Facebook, Instagram, MessageCircle].map((Icon, i) => (
+            {[FacebookIcon, InstagramIcon, MessageCircle].map((Icon, i) => (
               <a
                 key={i}
                 href="#"
