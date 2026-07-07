@@ -32,7 +32,11 @@ export default async function BlogDetailPage({ params }: Props) {
   const post = await getBlogPostBySlug(supabase, slug);
   if (!post) notFound();
 
-  await supabase.rpc("increment_blog_views", { post_id: post.id }).catch(() => {});
+  try {
+    await supabase.rpc("increment_blog_views", { post_id: post.id });
+  } catch {
+    // view-count tracking is non-critical; ignore failures
+  }
 
   const related = await getRelatedPosts(supabase, post.category_id, post.id);
 

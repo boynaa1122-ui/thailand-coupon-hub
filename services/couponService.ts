@@ -112,7 +112,9 @@ export async function incrementCouponStat(
   id: string,
   field: "views_count" | "clicks_count" | "copies_count"
 ) {
-  await supabase.rpc("increment_coupon_stat", { coupon_id: id, stat_field: field }).catch(() => {
+  try {
+    await supabase.rpc("increment_coupon_stat", { coupon_id: id, stat_field: field });
+  } catch {
     // Fallback if RPC not defined - ignore silently, non-critical.
-  });
+  }
 }

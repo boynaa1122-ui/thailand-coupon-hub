@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Tag, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Tag, MessageCircle } from "lucide-react";
+import { FacebookIcon, InstagramIcon } from "@/components/ui/SocialIcons";
 
 const FOOTER_LINKS = [
   {
@@ -34,7 +35,7 @@ export function Footer() {
             เว็บไซต์รวมคูปองและดีลส่วนลดที่ดีที่สุดในไทย อัปเดตทุกวัน ประหยัดได้จริง
           </p>
           <div className="mt-4 flex gap-2">
-            {[Facebook, Instagram, MessageCircle].map((Icon, i) => (
+            {[FacebookIcon, InstagramIcon, MessageCircle].map((Icon, i) => (
               <a
                 key={i}
                 href="#"

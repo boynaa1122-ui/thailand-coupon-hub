@@ -23,7 +23,7 @@
     "zod": "^3.23.8",
     "@hookform/resolvers": "^3.9.0",
     "lucide-react": "^1.22.0",
-    "next-themes": "^0.3.0",
+    "next-themes": "^0.4.6",
     "sonner": "^1.5.0",
     "recharts": "^2.12.7",
     "react-markdown": "^9.0.1",
@@ -49,5 +49,11 @@
   },
   "engines": {
     "node": ">=20.9.0"
+  },
+  "overrides": {
+    "next-themes": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   }
 }
