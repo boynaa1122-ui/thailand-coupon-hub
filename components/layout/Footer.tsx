@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Tag, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Tag, MessageCircle } from "lucide-react";
+import { FacebookIcon, InstagramIcon } from "@/components/ui/SocialIcons";
 
 const FOOTER_LINKS = [
   {
