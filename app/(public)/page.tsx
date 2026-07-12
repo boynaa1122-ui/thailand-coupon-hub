@@ -38,9 +38,9 @@ export default async function HomePage() {
       <MainSlider sliders={sliders} />
       <PromoGrid items={promoGrid} />
       <QuickLinks items={quickLinks} />
-      <CategoryGrid categories={categories} />
       <FeaturedCoupons coupons={featured} />
       <TrendingCoupons coupons={trending} />
+      <CategoryGrid categories={categories} />
     </>
   );
 }
