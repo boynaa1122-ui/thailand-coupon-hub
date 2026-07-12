@@ -83,13 +83,15 @@ export async function listCoupons(
   const from = (page - 1) * pageSize;
   const to = from + pageSize - 1;
 
+  // We use inner joins to filter by slug correctly
+  // Note: categories and brands are the actual table names in Supabase
   let query = supabase
     .from("coupons")
-    .select(SELECT_WITH_JOINS + ", category!inner(*), brand(*)", { count: "exact" });
+    .select("*, categories!inner(*), brands!inner(*)", { count: "exact" });
 
   if (onlyActive) query = query.eq("is_active", true);
-  if (categorySlug) query = query.eq("category.slug", categorySlug);
-  if (brandSlug) query = query.eq("brand.slug", brandSlug);
+  if (categorySlug) query = query.eq("categories.slug", categorySlug);
+  if (brandSlug) query = query.eq("brands.slug", brandSlug);
   if (search) query = query.ilike("title", `%${search}%`);
 
   const { data, count, error } = await query
@@ -98,8 +100,15 @@ export async function listCoupons(
 
   if (error) throw error;
 
+  // Map the results to match our Coupon type structure
+  const formattedData = (data as any[] || []).map(item => ({
+    ...item,
+    category: item.categories,
+    brand: item.brands
+  }));
+
   return {
-    data: (data as unknown as Coupon[]) || [],
+    data: formattedData as unknown as Coupon[],
     count: count || 0,
     page,
     pageSize,
