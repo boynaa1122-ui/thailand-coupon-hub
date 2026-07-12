@@ -43,7 +43,7 @@ export function MainSlider({ sliders }: MainSliderProps) {
 
   const currentSlider = sliders[currentSlide];
   const SlideContent = (
-    <div className="relative aspect-[16/7] w-full overflow-hidden rounded-md3md bg-neutral-100 shadow-elevation3 sm:aspect-[21/9]">
+    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md3md bg-neutral-100 shadow-elevation3 sm:aspect-[21/9]">
       <Image
         src={currentSlider.image_url}
         alt={currentSlider.title}
@@ -55,8 +55,8 @@ export function MainSlider({ sliders }: MainSliderProps) {
       <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
       
       {/* Optional Title Overlay */}
-      <div className="absolute bottom-8 left-8 z-10 hidden sm:block">
-        <h2 className="text-2xl font-bold text-white drop-shadow-lg">{currentSlider.title}</h2>
+      <div className="absolute bottom-4 left-4 z-10 sm:bottom-8 sm:left-8">
+        <h2 className="text-lg sm:text-2xl font-bold text-white drop-shadow-lg line-clamp-2">{currentSlider.title}</h2>
       </div>
     </div>
   );
@@ -77,17 +77,17 @@ export function MainSlider({ sliders }: MainSliderProps) {
             <>
               <button
                 onClick={goToPrevious}
-                className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 text-neutral-900 shadow-elevation3 opacity-0 transition-all group-hover:opacity-100 hover:bg-white"
+                className="absolute left-2 top-1/2 z-20 sm:left-4 -translate-y-1/2 rounded-full bg-white/90 p-2 sm:p-3 text-neutral-900 shadow-elevation3 opacity-0 transition-all group-hover:opacity-100 hover:bg-white"
                 aria-label="Previous slide"
               >
-                <ChevronLeft className="h-6 w-6" />
+                <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
               </button>
               <button
                 onClick={goToNext}
-                className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/90 p-3 text-neutral-900 shadow-elevation3 opacity-0 transition-all group-hover:opacity-100 hover:bg-white"
+                className="absolute right-2 top-1/2 z-20 sm:right-4 -translate-y-1/2 rounded-full bg-white/90 p-2 sm:p-3 text-neutral-900 shadow-elevation3 opacity-0 transition-all group-hover:opacity-100 hover:bg-white"
                 aria-label="Next slide"
               >
-                <ChevronRight className="h-6 w-6" />
+                <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
               </button>
             </>
           )}
@@ -95,15 +95,15 @@ export function MainSlider({ sliders }: MainSliderProps) {
 
         {/* Progress Dots */}
         {sliders.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+          <div className="absolute bottom-3 left-1/2 z-20 sm:bottom-4 flex -translate-x-1/2 gap-1.5 sm:gap-2">
             {sliders.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
+                className={`h-1 sm:h-1.5 rounded-full transition-all duration-300 ${
                   index === currentSlide
-                    ? "w-8 bg-white"
-                    : "w-2 bg-white/50 hover:bg-white/80"
+                    ? "w-6 sm:w-8 bg-white"
+                    : "w-1.5 sm:w-2 bg-white/50 hover:bg-white/80"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
