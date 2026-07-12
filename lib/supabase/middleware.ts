@@ -3,6 +3,22 @@ import { NextResponse, type NextRequest } from "next/server";
 import type { CookieOptions } from "@supabase/ssr";
 
 export async function updateSession(request: NextRequest) {
+  const path = request.nextUrl.pathname;
+
+  // Handle common typos and redirect to correct admin path
+  const adminRedirects: Record<string, string> = {
+    "/admn": "/admin",
+    "/admin-login": "/admin/login",
+    "/dashboard": "/admin/dashboard",
+    "/admin-dashboard": "/admin/dashboard",
+  };
+
+  if (adminRedirects[path]) {
+    const url = request.nextUrl.clone();
+    url.pathname = adminRedirects[path];
+    return NextResponse.redirect(url);
+  }
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -30,7 +46,6 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const path = request.nextUrl.pathname;
   const isAdminRoute = path.startsWith("/admin") && path !== "/admin/login";
 
   if (isAdminRoute && !user) {
