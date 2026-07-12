@@ -35,16 +35,33 @@ export function Footer() {
             เว็บไซต์รวมคูปองและดีลส่วนลดที่ดีที่สุดในไทย อัปเดตทุกวัน ประหยัดได้จริง
           </p>
           <div className="mt-4 flex gap-2">
-            {[FacebookIcon, InstagramIcon, MessageCircle].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="social link"
-                className="rounded-full bg-neutral-100 p-2 text-neutral-600 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-300"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+            <a
+              href="https://facebook.com/dealsthai"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="rounded-full bg-neutral-100 p-2 text-neutral-600 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-300"
+            >
+              <FacebookIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="https://instagram.com/dealsthai"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="rounded-full bg-neutral-100 p-2 text-neutral-600 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-300"
+            >
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="https://line.me/R/ti/p/@dealsthai"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LINE"
+              className="rounded-full bg-neutral-100 p-2 text-neutral-600 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-300"
+            >
+              <MessageCircle className="h-4 w-4" />
+            </a>
           </div>
         </div>
 

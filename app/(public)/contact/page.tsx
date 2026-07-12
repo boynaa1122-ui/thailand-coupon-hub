@@ -32,7 +32,7 @@ export default function ContactPage() {
             <Phone className="mt-0.5 h-5 w-5 text-primary-500" />
             <div>
               <p className="font-medium">โทรศัพท์</p>
-              <p className="text-sm text-neutral-500">02-xxx-xxxx (จันทร์-ศุกร์ 9:00-18:00)</p>
+              <p className="text-sm text-neutral-500">02-123-4567 (จันทร์-ศุกร์ 09:00-18:00)</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
