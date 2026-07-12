@@ -130,6 +130,36 @@ export interface SiteSettings {
   contact_email: string;
   social_links: { facebook: string; instagram: string; line: string };
   google_analytics_id: string;
+  promo_grid?: PromoGridItem[];
+  quick_links?: QuickLinkItem[];
+}
+
+export interface Slider {
+  id: string;
+  title: string;
+  image_url: string;
+  link_url: string | null;
+  display_order: number;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PromoGridItem {
+  title: string;
+  subtitle: string;
+  badge: string;
+  image: string;
+  link: string;
+  color: string;
+}
+
+export interface QuickLinkItem {
+  title: string;
+  subtitle: string;
+  icon: string;
+  color: string;
+  link: string;
 }
 
 export interface PaginatedResult<T> {

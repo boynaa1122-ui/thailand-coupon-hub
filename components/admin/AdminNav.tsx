@@ -15,6 +15,7 @@ import {
   LogOut,
   Menu,
   X,
+  Image,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { logout } from "@/services/authService";
@@ -23,6 +24,7 @@ const LINKS = [
   { href: "/admin/dashboard", label: "แดชบอร์ด", icon: LayoutDashboard },
   { href: "/admin/coupons", label: "คูปอง", icon: Tag },
   { href: "/admin/blog", label: "บทความ", icon: FileText },
+  { href: "/admin/sliders", label: "Slider", icon: Image },
   { href: "/admin/categories", label: "หมวดหมู่", icon: FolderTree },
   { href: "/admin/brands", label: "แบรนด์", icon: Building2 },
   { href: "/admin/analytics", label: "สถิติ", icon: BarChart3 },
