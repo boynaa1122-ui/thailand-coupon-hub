@@ -25,10 +25,10 @@ create trigger trg_sliders_updated before update on sliders
 -- ------------------------------------------------------------
 insert into settings (key, value) values
   ('promo_grid', '[
-    {"title": "Lazada", "subtitle": "คูปองลดแรง ส่งฟรีทั่วไทย", "badge": "ลดสูงสุด 80%", "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=800", "link": "/categories/shopping", "color": "bg-blue-600"},
+    {"title": "Lazada", "subtitle": "คูปองลดแรง ส่งฟรีทั่วไทย", "badge": "ลดสูงสุด 80%", "image": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=800", "link": "/categories/shopping", "color": "bg-[#00008F]"},
     {"title": "TikTok Shop", "subtitle": "โค้ดลดสุดคุ้ม ช้อปมันส์ทุกไลฟ์", "badge": "โค้ดลดเพิ่ม 100.-", "image": "https://images.unsplash.com/photo-1611605698335-8b1569810432?q=80&w=800", "link": "/categories/shopping", "color": "bg-black"},
-    {"title": "LINE MAN", "subtitle": "โค้ดลดค่าอาหาร ค่าส่งสุดคุ้ม", "badge": "ร้านเด็ด ส่งไว", "image": "https://images.unsplash.com/photo-1526367790999-0150786486a9?q=80&w=800", "link": "/categories/food", "color": "bg-green-600"},
-    {"title": "Grab", "subtitle": "โค้ดส่วนลด Grab มีให้ทุกวัน", "badge": "ลดจัดเต็ม", "image": "https://images.unsplash.com/photo-1590674852885-ce8245d98863?q=80&w=800", "link": "/categories/food", "color": "bg-green-700"}
+    {"title": "LINE MAN", "subtitle": "โค้ดลดค่าอาหาร ค่าส่งสุดคุ้ม", "badge": "ร้านเด็ด ส่งไว", "image": "https://images.unsplash.com/photo-1526367790999-0150786486a9?q=80&w=800", "link": "/categories/food", "color": "bg-[#00B900]"},
+    {"title": "Grab", "subtitle": "โค้ดส่วนลด Grab มีให้ทุกวัน", "badge": "ลดจัดเต็ม", "image": "https://images.unsplash.com/photo-1590674852885-ce8245d98863?q=80&w=800", "link": "/categories/food", "color": "bg-[#00B14F]"}
   ]'),
   ('quick_links', '[
     {"title": "คูปองยอดนิยม", "subtitle": "อัปเดตทุกวัน", "icon": "Flame", "color": "text-orange-500", "link": "/trending"},
@@ -41,7 +41,9 @@ insert into settings (key, value) values
 on conflict (key) do update set value = excluded.value;
 
 -- SEED SLIDERS
+-- Using high-quality promotion-style images from Unsplash that mimic Shopee/Lazada style
 insert into sliders (title, image_url, link_url, display_order) values
-  ('Shopee 10.10', 'https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=2000', '/search?q=shopee', 1),
-  ('Lazada Payday', 'https://images.unsplash.com/photo-1607082350899-7e105aa886ae?q=80&w=2000', '/search?q=lazada', 2)
+  ('Shopee 11.11 Big Sale', 'https://images.unsplash.com/photo-1607082349566-187342175e2f?q=80&w=2000', '/search?q=shopee', 1),
+  ('Lazada Payday Sale', 'https://images.unsplash.com/photo-1607082350899-7e105aa886ae?q=80&w=2000', '/search?q=lazada', 2),
+  ('GrabFood Mega Discount', 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2000', '/search?q=grab', 3)
 on conflict do nothing;
