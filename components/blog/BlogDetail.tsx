@@ -5,6 +5,24 @@ import { Clock, User } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 import type { BlogPost } from "@/types";
+import type { Components } from "react-markdown";
+
+const markdownComponents: Components = {
+  img({ src, alt }) {
+    if (!src) return null;
+    return (
+      <span className="relative my-6 block w-full overflow-hidden rounded-md3md">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt ?? ""}
+          className="h-auto w-full rounded-md3md object-cover"
+          loading="lazy"
+        />
+      </span>
+    );
+  },
+};
 
 export function BlogDetail({ post }: { post: BlogPost }) {
   return (
@@ -30,8 +48,13 @@ export function BlogDetail({ post }: { post: BlogPost }) {
         </div>
       )}
 
-      <div className="prose prose-neutral mt-8 max-w-none dark:prose-invert prose-headings:font-display prose-a:text-primary-600">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
+      <div className="prose prose-neutral mt-8 max-w-none dark:prose-invert prose-headings:font-display prose-a:text-primary-600 prose-img:rounded-md3md prose-img:w-full">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={markdownComponents}
+        >
+          {post.content}
+        </ReactMarkdown>
       </div>
     </article>
   );
